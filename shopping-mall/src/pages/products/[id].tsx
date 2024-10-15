@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query"
 import { fetcher, QueryKeys } from "../../queryClient"
+import ProductDetail from "../../components/product/detail";
 import { useParams } from "react-router-dom";
 import { Product } from "../../type";
 
-const ProductDetail = () => {
+const ProductDetailPage = () => {
     const { id } = useParams()
 
     const { data } = useQuery<Product>({
@@ -17,26 +18,11 @@ const ProductDetail = () => {
 
     if (!data) return null;
 
-    const {
-        category,
-        title,
-        image,
-        description,
-        price,
-        rating: {
-            rate
-        }
-    } = data
-
     return (
-        <div className="product-detail">
-            <p className="product-detail_category">{category}</p>
-            <p className="product-detail_title">{title}</p>
-            <img className="product-detail_image" src={image} />
-            <p className="product-detail_description">{description}</p>
-            <span className="product-detail_price">${price}</span>
-            <span className="product-detail_rating">{rate}</span>
+        <div>
+            <h2>상품상세</h2>
+            <ProductDetail item={data}/>
         </div>
-    )
+    ) 
 }
-export default ProductDetail
+export default ProductDetailPage

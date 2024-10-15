@@ -1,7 +1,5 @@
-// import { Product } from "../product.ts";
 import { Link } from "react-router-dom"
 import { Product } from "../../type"
-
 const ProductItem = ({ category, image, price, rating, title, id }: Product) => (
     <li className="product-item">
         <Link to={`/products/${id}`}>
@@ -13,5 +11,4 @@ const ProductItem = ({ category, image, price, rating, title, id }: Product) => 
         </Link>
     </li>
 )
-
 export default ProductItem
